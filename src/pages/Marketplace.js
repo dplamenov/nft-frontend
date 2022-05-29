@@ -30,13 +30,13 @@ function Marketplace({nft, marketplace, account}) {
           description: metadata.description,
           image: metadata.image
         }
-        listedItems.push(item)
+        listedItems.push(item);
         // Add listed item to sold items array if sold
         if (i.sold) soldItems.push(item)
   
     }
     setLoading(false)
-    setListedItems([...listedItems, ...listedItems, ...listedItems, ...listedItems, ...listedItems, ...listedItems, ...listedItems])
+    setListedItems(listedItems)
     setSoldItems(soldItems)
   }
   
@@ -130,7 +130,7 @@ function Marketplace({nft, marketplace, account}) {
                             <h4>{item.name}</h4>
                           </a>
                           <div className="nft__item_price">
-                              {ethers.utils.formatEther(item.price)} ETH<span>1/20</span>
+                          {ethers.utils.formatEther(item.totalPrice)} ETH<span>1/20</span>
                           </div>
                           <div className="nft__item_action">
                             <a href="#">Place a bid</a>
