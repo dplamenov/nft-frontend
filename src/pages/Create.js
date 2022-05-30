@@ -1,6 +1,8 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import { create as ipfsHttpClient } from 'ipfs-http-client'
-import {ethers} from 'ethers';
+import { ethers } from 'ethers';
+import { useNavigate } from "react-router-dom";
+
 
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
 
@@ -9,6 +11,7 @@ function Create({marketplace, nft}) {
   const [price, setPrice] = useState(1);
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
+  const navigate = useNavigate();
 
   const uploadFileHandler = async (e) => {
     const file = await client.add(e.target.files[0]);    
@@ -28,7 +31,8 @@ function Create({marketplace, nft}) {
     await (await nft.setApprovalForAll(marketplace.address, true)).wait()
     // add nft to marketplace
     const listingPrice = ethers.utils.parseEther(price.toString())
-    await (await marketplace.makeItem(nft.address, id, listingPrice)).wait()
+    await (await marketplace.makeItem(nft.address, id, listingPrice)).wait();
+    navigate('/marketplace');
   };
 
   return (
