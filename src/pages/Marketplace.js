@@ -106,9 +106,9 @@ function Marketplace({nft, marketplace, account}) {
                       <li><span>Bundles</span></li>
                     </ul>
                   </div>
-
                 </div>
               </div>
+              {loading && <h1>Loading</h1>}
               {listedItems.map((item, key) => {
                 return (
                   <div className={`${key >= 8 ? 'd-item': ''} col-lg-3 col-md-6 col-sm-6 col-xs-120`} key={key}>
@@ -143,9 +143,9 @@ function Marketplace({nft, marketplace, account}) {
                   </div>
                );
               })}
-              <div className="col-md-12 text-center">
+              {listedItems.length > 8 && <div className="col-md-12 text-center">
                 <a href="#" id="loadmore" className="btn-main wow fadeInUp lead">Load more</a>
-              </div>
+              </div>}
             </div>
           </div>
         </section>
