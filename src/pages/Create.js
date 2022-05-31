@@ -3,7 +3,6 @@ import { create as ipfsHttpClient } from 'ipfs-http-client'
 import { ethers } from 'ethers';
 import { useNavigate } from "react-router-dom";
 
-
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
 
 function Create({marketplace, nft}) {
